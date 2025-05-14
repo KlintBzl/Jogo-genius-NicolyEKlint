@@ -1,0 +1,9 @@
+body { text-align: center; font-family: sans-serif; }
+    #game-board { display: grid; grid-template-columns: 150px 150px; margin: 20px auto; gap: 10px; }
+    .color { width: 150px; height: 150px; cursor: pointer; border-radius: 10px; opacity: 0.8; }
+    .green { background-color: green; }
+    .red { background-color: red; }
+    .yellow { background-color: yellow; }
+    .blue { background-color: blue; }
+    .active { opacity: 1; }
+    #start-btn { padding: 10px 20px; font-size: 16px; margin-top: 20px; }
