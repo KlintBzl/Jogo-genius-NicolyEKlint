@@ -43,3 +43,27 @@ function sequenciar(){
         }      
     }, 700);
 }
+
+function corFlash(cor) {
+  const el = document.getElementById(cor);
+  el.classList.add('active');
+  setTimeout(() => el.classList.remove('active'), 400);
+}
+
+function clickManual(cor) {
+  if (!aceitandoInput) return;
+  corFlash(cor);
+  sequenciaDoJogador.push(cor);
+  const index = sequenciaDoJogador.length - 1;
+
+  if (sequenciaDoJogador[index] !== sequencia[index]) {
+    atualizarText.textContent = `Erro! Você perdeu no nível ${nivel}.`;
+    aceitandoInput = false;
+    return;
+  }
+
+  if (sequenciaDoJogador.length === sequencia.length) {
+    aceitandoInput = false;
+    setTimeout(nextLevel, 10);
+  }
+}

@@ -63,6 +63,6 @@ function handleClick(color) {
 
   if (playerSequence.length === sequence.length) {
     acceptingInput = false;
-    setTimeout(nextLevel, 1000);
+    setTimeout(nextLevel, 10);
   }
 }
