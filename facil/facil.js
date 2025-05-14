@@ -35,11 +35,11 @@ function sequenciar(){
     const intervalo = setInterval(() =>  {
 
     const cor = sequence[i];
-    corFlash(cor);
-    i++;
-    if (i >= sequence.length){
-        clearInterval(interval)
-    }
-            
-    }) 
+        corFlash(cor);
+        i++;
+        if (i >= sequence.length){
+            clearInterval(intervalo);
+            aceitandoInput = true;
+        }      
+    }, 700);
 }
