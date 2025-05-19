@@ -1,4 +1,4 @@
-const colors = ['green', 'red', 'yellow', 'blue'];
+const colors = ['verde', 'vermelho', 'amarelo', 'azul'];
 let sequence = [];
 let playerSequence = [];
 let level = 0;
@@ -32,7 +32,10 @@ function nextLevel() {
 function playSequence() {
   acceptingInput = false;
   let i = 0;
-  const interval = setInterval(() => {
+  if(level > 5){
+    statusText.textContent = "Parabéns você ganhou!";
+    }else{
+    const interval = setInterval(() => {
     const color = sequence[i];
     flashColor(color);
     i++;
@@ -41,6 +44,9 @@ function playSequence() {
       acceptingInput = true;
     }
   }, 700);
+    }
+  
+
 }
 
 function flashColor(color) {
@@ -55,14 +61,15 @@ function handleClick(color) {
   playerSequence.push(color);
   const index = playerSequence.length - 1;
 
+
   if (playerSequence[index] !== sequence[index]) {
-    statusText.textContent = `Erro! Você perdeu no nível ${level}.`;
+    statusText.textContent = `Game over.! Você perdeu no nível ${level}.`;
     acceptingInput = false;
     return;
   }
 
   if (playerSequence.length === sequence.length) {
-    acceptingInput = false;
-    setTimeout(nextLevel, 10);
+  acceptingInput = false;
+  setTimeout(nextLevel, 20);
   }
 }

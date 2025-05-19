@@ -1,69 +1,75 @@
-const cores = ['verde', 'amarelo', 'vermelho', 'azul'];
-let sequencia = [];
-let sequenciaDoJogador = [];
-let nivel = 0;
-let aceitandoInput = false;
+const colors = ['verde', 'vermelho', 'amarelo', 'azul'];
+let sequence = [];
+let playerSequence = [];
+let level = 0;
+let acceptingInput = false;
 
-const startBtn = document.getElementById('btn-start');
-const atualizarText = document.getElementById('text-atualizar');
+const startBtn = document.getElementById('start-btn');
+const statusText = document.getElementById('status');
 
-startBtn.addEventListener('click', startgame);
+startBtn.addEventListener('click', startGame);
 
-cores.forEach(cor => {
-    document.getElementById(cor).addEventListener('click', () => handleClick(cor));
+colors.forEach(color => {
+  document.getElementById(color).addEventListener('click', () => handleClick(color));
 });
 
-function comecarJogo(){
-    sequencia = [];
-    nivel = 0;
-    atualizarText.textContent = "Boa sorte!";
-    proximoN();
+function startGame() {
+  sequence = [];
+  level = 0;
+  statusText.textContent = "Boa sorte!";
+  nextLevel();
 }
 
-function proximoN() {
-    sequenciaDoJogador = [];
-    nivel++;
-    atualizarText.textContent = `Nível ${nivel}`;
-    const proxCor = cores[Math.floor(Math.random() * cores.length)];
-    sequencia.push(proxCor);
-    sequenciar();
+function nextLevel() {
+  playerSequence = [];
+  level++;
+  statusText.textContent = `Nível ${level}`;
+  const nextColor = colors[Math.floor(Math.random() * colors.length)];
+  sequence.push(nextColor);
+  playSequence();
 }
 
-function sequenciar(){
-    aceitandoInput = false;
-    let i = 0;
-    const intervalo = setInterval(() =>  {
+function playSequence() {
+  acceptingInput = false;
+  let i = 0;
+  if(level > 5){
+    statusText.textContent = "Parabéns você ganhou!";
+    }else{
+    const interval = setInterval(() => {
+    const color = sequence[i];
+    flashColor(color);
+    i++;
+    if (i >= sequence.length) {
+      clearInterval(interval);
+      acceptingInput = true;
+    }
+  }, 700);
+    }
+  
 
-    const cor = sequence[i];
-        corFlash(cor);
-        i++;
-        if (i >= sequence.length){
-            clearInterval(intervalo);
-            aceitandoInput = true;
-        }      
-    }, 700);
 }
 
-function corFlash(cor) {
-  const el = document.getElementById(cor);
+function flashColor(color) {
+  const el = document.getElementById(color);
   el.classList.add('active');
   setTimeout(() => el.classList.remove('active'), 400);
 }
 
-function clickManual(cor) {
-  if (!aceitandoInput) return;
-  corFlash(cor);
-  sequenciaDoJogador.push(cor);
-  const index = sequenciaDoJogador.length - 1;
+function handleClick(color) {
+  if (!acceptingInput) return;
+  flashColor(color);
+  playerSequence.push(color);
+  const index = playerSequence.length - 1;
 
-  if (sequenciaDoJogador[index] !== sequencia[index]) {
-    atualizarText.textContent = `Erro! Você perdeu no nível ${nivel}.`;
-    aceitandoInput = false;
+
+  if (playerSequence[index] !== sequence[index]) {
+    statusText.textContent = `Game over.! Você perdeu no nível ${level}.`;
+    acceptingInput = false;
     return;
   }
 
-  if (sequenciaDoJogador.length === sequencia.length) {
-    aceitandoInput = false;
-    setTimeout(nextLevel, 10);
+  if (playerSequence.length === sequence.length) {
+  acceptingInput = false;
+  setTimeout(nextLevel, 20);
   }
 }
