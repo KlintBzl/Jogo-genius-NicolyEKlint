@@ -1,16 +1,78 @@
-@import url('https://fonts.googleapis.com/css2?family=Honk&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Chango&family=Coiny&family=Concert+One&display=swap');
+
 
 *{
     margin: 0%;
     padding: 0%;
 }
 header{
-    background-color: rgba(255, 166, 0, 0.753);
-    background-size: cover;
+    background-image: url(depositphotos_4697617-stock-illustration-background-with-multicolor-upper-3d.jpg) ;
+    background-size: contain;
     padding: 1%;
 }
 
-h1{
+#titulo{
     text-align: center;
-    font-family: 'Honk', sans-serif;
+    font-family: 'Coiny';
+    color: rgb(1, 9, 54);
+    opacity: 1;
+}
+
+h2{
+    text-align: center;
+    margin-top: 4%;
+    font-family: 'Chango';
+    color: rgb(7, 20, 138);
+}
+
+#Jogo{
+    text-align: center;
+    color: rgb(31, 15, 247);
+    font-family: 'Concert One';
+    margin-bottom: 3%;
+}
+
+div{
+    text-align: center;
+    background-color: rgba(255, 238, 0, 0.658);
+    margin-top: 7%;
+    margin-left: 20%;
+    margin-right: 20%;
+    padding-top: 0%;
+    padding-bottom: 3%;
+    border-radius: 10px;
+
+}
+
+#facil{
+
+    padding: 2%;
+    border-radius: 5px;
+    margin: 1%;
+    background-color: rgb(0, 185, 0);
+    font-size: 18px;
+}
+#medio{
+
+    padding: 2%;
+    border-radius: 5px;
+    margin: 1%;
+    background-color: yellow;
+    font-size: 18px;
+}
+#dificil{
+
+    padding: 2%;
+    border-radius: 5px;
+    margin: 1%;
+    background-color: red;
+    font-size: 18px;
+}
+#classico{
+
+    padding: 2%;
+    border-radius: 5px;
+    margin: 1%;
+    background-color: blue;
+    font-size: 18px;
 }

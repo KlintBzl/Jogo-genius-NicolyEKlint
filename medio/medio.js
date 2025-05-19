@@ -32,7 +32,7 @@ function nextLevel() {
 function playSequence() {
   acceptingInput = false;
   let i = 0;
-  if(level > 5){
+  if(level > 15){
     statusText.textContent = "Parabéns você ganhou!";
     }else{
     const interval = setInterval(() => {
@@ -63,7 +63,7 @@ function handleClick(color) {
 
 
   if (playerSequence[index] !== sequence[index]) {
-    statusText.textContent = `Game over.! Você perdeu no nível ${level}.`;
+    statusText.textContent = `Game over! Você perdeu no nível ${level}.`;
     acceptingInput = false;
     return;
   }

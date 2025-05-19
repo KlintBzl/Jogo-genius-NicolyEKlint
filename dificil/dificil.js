@@ -6,7 +6,6 @@ let acceptingInput = false;
 
 const startBtn = document.getElementById('start-btn');
 const statusText = document.getElementById('status');
-const lista = document.getElementById('lista-compras');
 
 startBtn.addEventListener('click', startGame);
 
@@ -14,20 +13,11 @@ colors.forEach(color => {
   document.getElementById(color).addEventListener('click', () => handleClick(color));
 });
 
-const yOuN = "";
-const nome = "";
-
 function startGame() {
   sequence = [];
   level = 0;
   statusText.textContent = "Boa sorte!";
   nextLevel();
-
-  yOuN = prompt("Você quer colocar seu record na lista?");
-  if(yOuN === "sim"){
-    nome = prompt("Coloque seu nome:");
-      alert("Bom jogo!");
-  }
 }
 
 function nextLevel() {
@@ -42,7 +32,7 @@ function nextLevel() {
 function playSequence() {
   acceptingInput = false;
   let i = 0;
-  if(level > 10){
+  if(level > 25){
     statusText.textContent = "Parabéns você ganhou!";
     }else{
     const interval = setInterval(() => {
@@ -75,13 +65,6 @@ function handleClick(color) {
   if (playerSequence[index] !== sequence[index]) {
     statusText.textContent = `Game over! Você perdeu no nível ${level}.`;
     acceptingInput = false;
-    if (nome !== '') {
-        const novoItem = document.createElement('li');
-        novoItem.textContent = `${nome} ${level}`;
-        lista.appendChild(novoItem);
-        inputItem.value = '';
-        inputItem.focus();
-      }
     return;
   }
 
@@ -90,6 +73,3 @@ function handleClick(color) {
   setTimeout(nextLevel, 20);
   }
 }
-
-
-    
