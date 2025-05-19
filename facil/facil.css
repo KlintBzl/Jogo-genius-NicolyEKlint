@@ -75,3 +75,12 @@ button{
     border: none;
     border-radius: 5px;
 }
+
+#alternar{
+    border: none;
+    margin: 1% 2%;
+    padding: 1%;
+    border-radius: 8px;
+    background-color: rgb(177, 177, 177);
+    margin-right: 89%;
+}

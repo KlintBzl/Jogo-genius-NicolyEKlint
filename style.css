@@ -76,3 +76,11 @@ div{
     background-color: blue;
     font-size: 18px;
 }
+
+#alternar{
+    border: none;
+    margin: 1% 2%;
+    padding: 1%;
+    border-radius: 8px;
+    background-color: rgb(82, 82, 82);
+}
