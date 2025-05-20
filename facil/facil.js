@@ -100,7 +100,7 @@ function handleClick(color) {
   acceptingInput = false;
   setTimeout(proxLevel, 10);
   }
-}
+};
 
 const btnAlternar = document.getElementById("alternar");
 const troca = document.querySelector("body");
@@ -110,12 +110,12 @@ btnAlternar.addEventListener("click", (e) => {
 
     numerar++;
 
-    if(numerar % 2 == 1){
+    if(numerar == 2){
       troca.classList.add("escurecer")
-    }else if(numerar % 2 != 0){
+    }else if(numerar % 2 == 1){
       troca.classList.add("clarear")
     }
-})
+});
 
 
     
