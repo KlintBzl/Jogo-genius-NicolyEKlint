@@ -66,14 +66,11 @@ h2{
     color: white;
 }
 
-input{
-    border: none;
-    border-radius: 5px;
+.escurecer{
+    background-color: black;
 }
-
-button{
-    border: none;
-    border-radius: 5px;
+.clarear{
+    background-color: rgb(104, 104, 104);
 }
 
 #alternar{

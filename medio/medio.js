@@ -6,6 +6,7 @@ let acceptingInput = false;
 
 const startBtn = document.getElementById('start-btn');
 const statusText = document.getElementById('status');
+const lista = document.getElementById('lista-compras');
 
 startBtn.addEventListener('click', startGame);
 
@@ -17,10 +18,10 @@ function startGame() {
   sequence = [];
   level = 0;
   statusText.textContent = "Boa sorte!";
-  nextLevel();
+  proxLevel();
 }
 
-function nextLevel() {
+function proxLevel() {
   playerSequence = [];
   level++;
   statusText.textContent = `Nível ${level}`;
@@ -32,8 +33,21 @@ function nextLevel() {
 function playSequence() {
   acceptingInput = false;
   let i = 0;
-  if(level > 15){
+  if(level > 10){
     statusText.textContent = "Parabéns você ganhou!";
+    const yOuN = prompt("Você quer colocar seu record na lista?");
+  if(yOuN === "sim"){
+    const nome = prompt("Coloque seu nome:");
+      
+      if (nome !== '') {
+        alert("Obrigado por jogar!");
+        const novoItem = document.createElement('li');
+        novoItem.textContent = `${nome} ${level}`;
+        lista.appendChild(novoItem);
+        inputItem.value = '';
+        inputItem.focus();
+      }
+  }
     }else{
     const interval = setInterval(() => {
     const color = sequence[i];
@@ -65,11 +79,28 @@ function handleClick(color) {
   if (playerSequence[index] !== sequence[index]) {
     statusText.textContent = `Game over! Você perdeu no nível ${level}.`;
     acceptingInput = false;
-    return;
+    
+    const yOuN = prompt("Você quer colocar seu record na lista?");
+  if(yOuN === "sim"){
+    const nome = prompt("Coloque seu nome:");
+      alert("Obrigado! Que tal tentar novamente?");
+      if (nome !== '') {
+        alert("Obrigado! Que tal tentar novamente?");
+        const novoItem = document.createElement('li');
+        novoItem.textContent = `${nome} | Nível perdido: ${level}`;
+        lista.appendChild(novoItem);
+        inputItem.value = '';
+        inputItem.focus();
+      }
+  }
+  return;
   }
 
   if (playerSequence.length === sequence.length) {
   acceptingInput = false;
-  setTimeout(nextLevel, 20);
+  setTimeout(proxLevel, 10);
   }
 }
+
+
+    

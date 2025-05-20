@@ -87,7 +87,7 @@ function handleClick(color) {
       if (nome !== '') {
         alert("Obrigado! Que tal tentar novamente?");
         const novoItem = document.createElement('li');
-        novoItem.textContent = `${nome} ${level}`;
+        novoItem.textContent = `${nome} | Nível perdido: ${level}`;
         lista.appendChild(novoItem);
         inputItem.value = '';
         inputItem.focus();
@@ -98,9 +98,24 @@ function handleClick(color) {
 
   if (playerSequence.length === sequence.length) {
   acceptingInput = false;
-  setTimeout(proxLevel, 20);
+  setTimeout(proxLevel, 10);
   }
 }
+
+const btnAlternar = document.getElementById("alternar");
+const troca = document.querySelector("body");
+let numerar = 0;
+
+btnAlternar.addEventListener("click", (e) => {
+
+    numerar++;
+
+    if(numerar % 2 == 1){
+      troca.classList.add("escurecer")
+    }else if(numerar % 2 != 0){
+      troca.classList.add("clarear")
+    }
+})
 
 
     
