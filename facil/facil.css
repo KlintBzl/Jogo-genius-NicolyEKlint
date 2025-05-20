@@ -17,6 +17,7 @@ a button{
     margin-top: 10px;
     border-radius: 5px;
     background-color: rgb(58, 58, 58);
+    cursor: pointer;
 }
 
 .cor { 
@@ -50,6 +51,7 @@ a button{
     margin-top: 20px; 
     border-radius: 5px;
     border: none;
+    cursor: pointer;
 }
 
 h2{
@@ -80,6 +82,7 @@ h2{
     border-radius: 8px;
     background-color: rgb(177, 177, 177);
     margin-right: 89%;
+    cursor: pointer;
 }
 
 .esclaro{
