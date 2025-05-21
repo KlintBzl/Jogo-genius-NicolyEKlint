@@ -38,7 +38,24 @@ function proxLevel() {
 function playSequence() {
   acceptingInput = false;
   let i = 0;
-  
+  if(level > 10){
+    statusText.textContent = "Parabéns você ganhou!";
+    jogar.pause();
+    ganhou.play();
+    const yOuN = prompt("Você quer colocar seu record na lista?");
+  if(yOuN === "sim"){
+    const nome = prompt("Coloque seu nome:");
+      
+      if (nome !== '') {
+        alert("Obrigado por jogar!");
+        const novoItem = document.createElement('li');
+        novoItem.textContent = `${nome} ${level-1}`;
+        lista.appendChild(novoItem);
+        inputItem.value = '';
+        inputItem.focus();
+      }
+  }
+    }else{
     const interval = setInterval(() => {
     const color = sequence[i];
     flashColor(color);
@@ -49,6 +66,9 @@ function playSequence() {
     }
   }, 700);
     }
+  
+
+}
 
 function flashColor(color) {
   const el = document.getElementById(color);
@@ -76,7 +96,7 @@ function handleClick(color) {
       if (nome !== '') {
         alert("Obrigado! Que tal tentar novamente?");
         const novoItem = document.createElement('li');
-        novoItem.textContent = `${nome} | Nível perdido: ${level}`;
+        novoItem.textContent = `${nome} | Nível em que perdeu: ${level}`;
         lista.appendChild(novoItem);
         inputItem.value = '';
         inputItem.focus();
@@ -94,12 +114,16 @@ function handleClick(color) {
 const btnAlternarE = document.getElementById("alternarE");
 const btnAlternarC = document.getElementById("alternarC");
 const troca = document.querySelector("body");
-btnAlternarE.addEventListener("click", (e) => {
-      troca.classList.add("escurecerB")
+
+btnAlternarC.addEventListener("click", (e) => {
+      troca.classList.add("escurecerB");
+      startBtn.classList.add("escurecerStart");
+      statusText.classList.add("escurecerText");
 
 });
 
-btnAlternarC.addEventListener("click", (e) => {
-      troca.classList.remove("escurecerB")
-
+btnAlternarE.addEventListener("click", (e) => {
+      troca.classList.remove("escurecerB");
+      startBtn.classList.remove("escurecerStart");
+      statusText.classList.remove("escurecerText");
 })
