@@ -49,7 +49,7 @@ function playSequence() {
       if (nome !== '') {
         alert("Obrigado por jogar!");
         const novoItem = document.createElement('li');
-        novoItem.textContent = `${nome} ${level-1}`;
+        novoItem.textContent = `${nome} | Nível alcançado: ${level-1}`;
         lista.appendChild(novoItem);
         inputItem.value = '';
         inputItem.focus();

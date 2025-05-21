@@ -38,7 +38,7 @@ function proxLevel() {
 function playSequence() {
   acceptingInput = false;
   let i = 0;
-  if(level > 10){
+  if(level > 5){
     statusText.textContent = "Parabéns você ganhou!";
     jogar.pause();
     ganhou.play();
@@ -49,7 +49,7 @@ function playSequence() {
       if (nome !== '') {
         alert("Obrigado por jogar!");
         const novoItem = document.createElement('li');
-        novoItem.textContent = `${nome} ${level-1}`;
+        novoItem.textContent = `${nome} | Nível alcançado: ${level-1}`;
         lista.appendChild(novoItem);
         inputItem.value = '';
         inputItem.focus();
