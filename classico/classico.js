@@ -38,24 +38,7 @@ function proxLevel() {
 function playSequence() {
   acceptingInput = false;
   let i = 0;
-  if(level > 10){
-    statusText.textContent = "Parabéns você ganhou!";
-    jogar.pause();
-    ganhou.play();
-    const yOuN = prompt("Você quer colocar seu record na lista?");
-  if(yOuN === "sim"){
-    const nome = prompt("Coloque seu nome:");
-      
-      if (nome !== '') {
-        alert("Obrigado por jogar!");
-        const novoItem = document.createElement('li');
-        novoItem.textContent = `${nome} ${level-1}`;
-        lista.appendChild(novoItem);
-        inputItem.value = '';
-        inputItem.focus();
-      }
-  }
-    }else{
+  
     const interval = setInterval(() => {
     const color = sequence[i];
     flashColor(color);
@@ -66,9 +49,6 @@ function playSequence() {
     }
   }, 700);
     }
-  
-
-}
 
 function flashColor(color) {
   const el = document.getElementById(color);

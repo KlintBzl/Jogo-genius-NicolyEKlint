@@ -38,7 +38,7 @@ function proxLevel() {
 function playSequence() {
   acceptingInput = false;
   let i = 0;
-  if(level > 10){
+  if(level > 25){
     statusText.textContent = "Parabéns você ganhou!";
     jogar.pause();
     ganhou.play();
