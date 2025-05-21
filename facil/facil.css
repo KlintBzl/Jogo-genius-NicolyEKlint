@@ -87,3 +87,10 @@ h2{
     background-color: white;
     
 }
+
+@media (max-width: 600px) {
+#corpo{
+
+    margin-left: 22%;
+};
+}
