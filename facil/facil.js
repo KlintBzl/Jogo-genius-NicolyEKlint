@@ -113,5 +113,3 @@ btnAlternarC.addEventListener("click", (e) => {
       troca.classList.remove("clarear")
 })
 
-
-    
