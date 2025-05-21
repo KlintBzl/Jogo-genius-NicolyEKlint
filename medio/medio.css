@@ -18,6 +18,8 @@ a button{
     border-radius: 5px;
     background-color: rgb(58, 58, 58);
     cursor: pointer;
+    border: none;
+    padding: 6px;
 }
 
 .cor { 
@@ -59,13 +61,13 @@ h2{
 }
 
 #placar{
-    background-color: rgba(255, 255, 255, 0.26);
+    background-color: rgb(71, 71, 71);
     margin-right: 55%;
     border-radius: 10px;
 }
 
 #lista-compras{
-    color: white;
+    color: rgb(255, 255, 255);
 }
 
 #alternarE{
@@ -89,4 +91,14 @@ h2{
 
 .escurecerB{
     background-color: rgb(255, 255, 255);
+}
+
+.escurecerStart{
+    background-color: rgb(141, 141, 141);
+}
+.escurecerText{
+    color: black;
+}
+.escurecerLista{
+    color: rgb(0, 0, 0);
 }

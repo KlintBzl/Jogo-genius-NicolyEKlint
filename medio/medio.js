@@ -96,7 +96,7 @@ function handleClick(color) {
       if (nome !== '') {
         alert("Obrigado! Que tal tentar novamente?");
         const novoItem = document.createElement('li');
-        novoItem.textContent = `${nome} | Nível perdido: ${level}`;
+        novoItem.textContent = `${nome} | Nível em que perdeu: ${level}`;
         lista.appendChild(novoItem);
         inputItem.value = '';
         inputItem.focus();
@@ -114,12 +114,16 @@ function handleClick(color) {
 const btnAlternarE = document.getElementById("alternarE");
 const btnAlternarC = document.getElementById("alternarC");
 const troca = document.querySelector("body");
+
 btnAlternarC.addEventListener("click", (e) => {
-      troca.classList.add("escurecerB")
+      troca.classList.add("escurecerB");
+      startBtn.classList.add("escurecerStart");
+      statusText.classList.add("escurecerText");
 
 });
 
 btnAlternarE.addEventListener("click", (e) => {
-      troca.classList.remove("escurecerB")
-
+      troca.classList.remove("escurecerB");
+      startBtn.classList.remove("escurecerStart");
+      statusText.classList.remove("escurecerText");
 })
