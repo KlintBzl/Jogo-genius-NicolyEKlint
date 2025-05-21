@@ -68,11 +68,9 @@ h2{
     color: white;
 }
 
-.escurecer{
-    background-color: black;
-}
+
 .clarear{
-    background-color: rgb(104, 104, 104);
+    background-color: rgb(221, 221, 221);
 }
 
 #alternar{
