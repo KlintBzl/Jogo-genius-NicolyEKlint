@@ -4,6 +4,7 @@ let playerSequence = [];
 let level = 0;
 let acceptingInput = false;
 
+const ganhou = new Audio('/sons/goodresult-82807.mp3')
 const perdeu = new Audio('/sons/failure-1-89170.mp3')
 const jogar = new Audio('/sons/gaming-music-8-bit-console-play-background-intro-theme-342069.mp3')
 jogar.loop = true;
@@ -40,6 +41,7 @@ function playSequence() {
   if(level > 10){
     statusText.textContent = "Parabéns você ganhou!";
     jogar.pause();
+    ganhou.play();
     const yOuN = prompt("Você quer colocar seu record na lista?");
   if(yOuN === "sim"){
     const nome = prompt("Coloque seu nome:");
