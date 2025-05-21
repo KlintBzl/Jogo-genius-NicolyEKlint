@@ -4,6 +4,10 @@ let playerSequence = [];
 let level = 0;
 let acceptingInput = false;
 
+const ganhou = new Audio('/sons/goodresult-82807.mp3')
+const perdeu = new Audio('/sons/failure-1-89170.mp3')
+const jogar = new Audio('/sons/gaming-music-8-bit-console-play-background-intro-theme-342069.mp3')
+jogar.loop = true;
 const startBtn = document.getElementById('start-btn');
 const statusText = document.getElementById('status');
 const lista = document.getElementById('lista-compras');
@@ -19,6 +23,7 @@ function startGame() {
   level = 0;
   statusText.textContent = "Boa sorte!";
   proxLevel();
+  jogar.play();
 }
 
 function proxLevel() {
@@ -35,6 +40,8 @@ function playSequence() {
   let i = 0;
   if(level > 10){
     statusText.textContent = "Parabéns você ganhou!";
+    jogar.pause();
+    ganhou.play();
     const yOuN = prompt("Você quer colocar seu record na lista?");
   if(yOuN === "sim"){
     const nome = prompt("Coloque seu nome:");
@@ -42,7 +49,7 @@ function playSequence() {
       if (nome !== '') {
         alert("Obrigado por jogar!");
         const novoItem = document.createElement('li');
-        novoItem.textContent = `${nome} ${level}`;
+        novoItem.textContent = `${nome} ${level-1}`;
         lista.appendChild(novoItem);
         inputItem.value = '';
         inputItem.focus();
@@ -79,6 +86,8 @@ function handleClick(color) {
   if (playerSequence[index] !== sequence[index]) {
     statusText.textContent = `Game over! Você perdeu no nível ${level}.`;
     acceptingInput = false;
+    jogar.pause();
+    perdeu.play();
     
     const yOuN = prompt("Você quer colocar seu record na lista?");
   if(yOuN === "sim"){
@@ -100,7 +109,7 @@ function handleClick(color) {
   acceptingInput = false;
   setTimeout(proxLevel, 10);
   }
-}
+};
 
 const btnAlternarE = document.getElementById("alternarE");
 const btnAlternarC = document.getElementById("alternarC");
