@@ -10,7 +10,7 @@ const jogar = new Audio('/sons/gaming-music-8-bit-console-play-background-intro-
 jogar.loop = true;
 const startBtn = document.getElementById('start-btn');
 const statusText = document.getElementById('status');
-const lista = document.getElementById('lista-compras');
+const lista = document.getElementById('lista-records');
 
 startBtn.addEventListener('click', startGame);
 
