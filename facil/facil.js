@@ -102,20 +102,16 @@ function handleClick(color) {
   }
 };
 
-const btnAlternar = document.getElementById("alternar");
+const btnAlternarE = document.getElementById("alternarE");
+const btnAlternarC = document.getElementById("alternarC");
 const troca = document.querySelector("body");
-let numerar = 0;
-
-btnAlternar.addEventListener("click", (e) => {
-
-    numerar++;
-
-    if(numerar == 2){
+btnAlternarE.addEventListener("click", (e) => {
       troca.classList.add("escurecer")
-    }else if(numerar % 2 == 1){
-      troca.classList.add("clarear")
-    }
 });
+
+btnAlternarC.addEventListener("click", (e) => {
+      troca.classList.remove("escurecer")
+})
 
 
     
