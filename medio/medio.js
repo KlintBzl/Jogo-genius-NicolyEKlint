@@ -1,4 +1,4 @@
-const colors = ['verde', 'vermelho', 'amarelo', 'azul'];
+const cores = ['verde', 'vermelho', 'amarelo', 'azul'];
 let sequence = [];
 let playerSequence = [];
 let level = 0;
@@ -8,14 +8,14 @@ const ganhou = new Audio('/sons/goodresult-82807.mp3')
 const perdeu = new Audio('/sons/failure-1-89170.mp3')
 const jogar = new Audio('/sons/gaming-music-8-bit-console-play-background-intro-theme-342069.mp3')
 jogar.loop = true;
-const startBtn = document.getElementById('start-btn');
+const btnStart = document.getElementById('start-btn');
 const statusText = document.getElementById('status');
-const lista = document.getElementById('lista-compras');
+const lista = document.getElementById('lista-records');
 
-startBtn.addEventListener('click', startGame);
+btnStart.addEventListener('click', startGame);
 
-colors.forEach(color => {
-  document.getElementById(color).addEventListener('click', () => handleClick(color));
+cores.forEach(cor => {
+  document.getElementById(cor).addEventListener('click', () => clickManual(cor));
 });
 
 function startGame() {
@@ -30,8 +30,8 @@ function proxLevel() {
   playerSequence = [];
   level++;
   statusText.textContent = `Nível ${level}`;
-  const nextColor = colors[Math.floor(Math.random() * colors.length)];
-  sequence.push(nextColor);
+  const nextCor = cores[Math.floor(Math.random() * cores.length)];
+  sequence.push(nextCor);
   playSequence();
 }
 
@@ -57,8 +57,8 @@ function playSequence() {
   }
     }else{
     const interval = setInterval(() => {
-    const color = sequence[i];
-    flashColor(color);
+    const cor = sequence[i];
+    flashCor(cor);
     i++;
     if (i >= sequence.length) {
       clearInterval(interval);
@@ -70,16 +70,16 @@ function playSequence() {
 
 }
 
-function flashColor(color) {
-  const el = document.getElementById(color);
+function flashCor(cor) {
+  const el = document.getElementById(cor);
   el.classList.add('active');
   setTimeout(() => el.classList.remove('active'), 400);
 }
 
-function handleClick(color) {
+function clickManual(cor) {
   if (!acceptingInput) return;
-  flashColor(color);
-  playerSequence.push(color);
+  flashCor(cor);
+  playerSequence.push(cor);
   const index = playerSequence.length - 1;
 
 
@@ -117,13 +117,13 @@ const troca = document.querySelector("body");
 
 btnAlternarC.addEventListener("click", (e) => {
       troca.classList.add("escurecerB");
-      startBtn.classList.add("escurecerStart");
+      btnStart.classList.add("escurecerStart");
       statusText.classList.add("escurecerText");
 
 });
 
 btnAlternarE.addEventListener("click", (e) => {
       troca.classList.remove("escurecerB");
-      startBtn.classList.remove("escurecerStart");
+      btnStart.classList.remove("escurecerStart");
       statusText.classList.remove("escurecerText");
 })
