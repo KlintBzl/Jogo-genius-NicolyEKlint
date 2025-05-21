@@ -4,7 +4,8 @@ let playerSequence = [];
 let level = 0;
 let acceptingInput = false;
 
-const jogar = new Audio('./sons/gaming-music-8-bit-console-play-background-intro-theme-342069.mp3')
+const jogar = new Audio('/sons/gaming-music-8-bit-console-play-background-intro-theme-342069.mp3')
+jogar.loop = true;
 const startBtn = document.getElementById('start-btn');
 const statusText = document.getElementById('status');
 const lista = document.getElementById('lista-compras');
@@ -45,7 +46,7 @@ function playSequence() {
       if (nome !== '') {
         alert("Obrigado por jogar!");
         const novoItem = document.createElement('li');
-        novoItem.textContent = `${nome} ${level}`;
+        novoItem.textContent = `${nome} ${level-1}`;
         lista.appendChild(novoItem);
         inputItem.value = '';
         inputItem.focus();
