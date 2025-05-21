@@ -20,7 +20,7 @@ function startGame() {
   level = 0;
   statusText.textContent = "Boa sorte!";
   proxLevel();
-  jogar.play;
+  jogar.play();
 }
 
 function proxLevel() {
@@ -37,7 +37,7 @@ function playSequence() {
   let i = 0;
   if(level > 10){
     statusText.textContent = "Parabéns você ganhou!";
-    jogar.pause;
+    jogar.pause();
     const yOuN = prompt("Você quer colocar seu record na lista?");
   if(yOuN === "sim"){
     const nome = prompt("Coloque seu nome:");
@@ -82,7 +82,7 @@ function handleClick(color) {
   if (playerSequence[index] !== sequence[index]) {
     statusText.textContent = `Game over! Você perdeu no nível ${level}.`;
     acceptingInput = false;
-    jogar.pause;
+    jogar.pause();
     
     const yOuN = prompt("Você quer colocar seu record na lista?");
   if(yOuN === "sim"){
