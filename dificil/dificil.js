@@ -1,4 +1,4 @@
-const colors = ['verde', 'vermelho', 'amarelo', 'azul'];
+const cores = ['verde', 'vermelho', 'amarelo', 'azul'];
 let sequence = [];
 let playerSequence = [];
 let level = 0;
@@ -14,8 +14,8 @@ const lista = document.getElementById('lista-records');
 
 startBtn.addEventListener('click', startGame);
 
-colors.forEach(color => {
-  document.getElementById(color).addEventListener('click', () => handleClick(color));
+cores.forEach(cor => {
+  document.getElementById(cor).addEventListener('click', () => handleClick(cor));
 });
 
 function startGame() {
@@ -30,8 +30,8 @@ function proxLevel() {
   playerSequence = [];
   level++;
   statusText.textContent = `Nível ${level}`;
-  const nextColor = colors[Math.floor(Math.random() * colors.length)];
-  sequence.push(nextColor);
+  const nextCor = cores[Math.floor(Math.random() * cores.length)];
+  sequence.push(nextCor);
   playSequence();
 }
 
@@ -57,8 +57,8 @@ function playSequence() {
   }
     }else{
     const interval = setInterval(() => {
-    const color = sequence[i];
-    flashColor(color);
+    const cor = sequence[i];
+    flashCor(cor);
     i++;
     if (i >= sequence.length) {
       clearInterval(interval);
@@ -70,16 +70,16 @@ function playSequence() {
 
 }
 
-function flashColor(color) {
-  const el = document.getElementById(color);
+function flashCor(cor) {
+  const el = document.getElementById(cor);
   el.classList.add('active');
   setTimeout(() => el.classList.remove('active'), 400);
 }
 
-function handleClick(color) {
+function handleClick(cor) {
   if (!acceptingInput) return;
-  flashColor(color);
-  playerSequence.push(color);
+  flashCor(cor);
+  playerSequence.push(cor);
   const index = playerSequence.length - 1;
 
 

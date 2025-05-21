@@ -8,6 +8,7 @@ const ganhou = new Audio('/sons/goodresult-82807.mp3')
 const perdeu = new Audio('/sons/failure-1-89170.mp3')
 const jogar = new Audio('/sons/gaming-music-8-bit-console-play-background-intro-theme-342069.mp3')
 jogar.loop = true;
+jogar.volume = 0.5;
 const btnStart = document.getElementById('start-btn');
 const statusText = document.getElementById('status');
 const lista = document.getElementById('lista-records');
