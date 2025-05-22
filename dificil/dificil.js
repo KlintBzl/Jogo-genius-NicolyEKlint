@@ -70,10 +70,20 @@ function playSequence() {
 
 }
 
+
 function flashCor(cor) {
   const el = document.getElementById(cor);
   el.classList.add('active');
   setTimeout(() => el.classList.remove('active'), 400);
+  if(cor == "verde"){
+    alert("verde")
+  }else if(cor == "vermelho"){
+    alert("vermelho")
+  }else if(cor == "amarelo"){
+    alert("amarelo")
+  }else if(cor == "azul"){
+    alert("azul")
+  }
 }
 
 function handleClick(cor) {
