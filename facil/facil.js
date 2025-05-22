@@ -4,10 +4,9 @@ let playerSequence = [];
 let level = 0;
 let acceptingInput = false;
 
-const ganhou = new Audio('/sons/goodresult-82807.mp3')
-const perdeu = new Audio('/sons/failure-1-89170.mp3')
-const jogar = new Audio('/sons/gaming-music-8-bit-console-play-background-intro-theme-342069.mp3')
-jogar.loop = true;
+const ganhou = new Audio('/sons/goodresult-82807.mp3');
+const perdeu = new Audio('/sons/failure-1-89170.mp3');
+
 const startBtn = document.getElementById('start-btn');
 const statusText = document.getElementById('status');
 const lista = document.getElementById('lista-records');
@@ -23,7 +22,6 @@ function startGame() {
   level = 0;
   statusText.textContent = "Boa sorte!";
   proxLevel();
-  jogar.play();
 }
 
 function proxLevel() {
@@ -40,7 +38,6 @@ function playSequence() {
   let i = 0;
   if(level > 5){
     statusText.textContent = "Parabéns você ganhou!";
-    jogar.pause();
     ganhou.play();
     const yOuN = prompt("Você quer colocar seu record na lista?");
   if(yOuN === "sim"){
@@ -95,7 +92,6 @@ function handleClick(cor) {
   if (playerSequence[index] !== sequence[index]) {
     statusText.textContent = `Game over! Você perdeu no nível ${level}.`;
     acceptingInput = false;
-    jogar.pause();
     perdeu.play();
     
     const yOuN = prompt("Você quer colocar seu record na lista?");
@@ -135,4 +131,22 @@ btnAlternarE.addEventListener("click", (e) => {
       troca.classList.remove("escurecerB");
       startBtn.classList.remove("escurecerStart");
       statusText.classList.remove("escurecerText");
+})
+
+const jogar = new Audio('/sons/gaming-music-8-bit-console-play-background-intro-theme-342069.mp3')
+jogar.loop = true;
+let numerarSom = 0;
+
+const btnAmbiente = document.getElementById("Mudo");
+
+btnAmbiente.addEventListener("click", (e) => {
+  if(numerarSom === 0){
+    jogar.pause();
+    numerarSom += 1;
+    btnAmbiente.textContent = "Desativar mudo"
+  }else if(numerarSom === 1){
+    jogar.play();
+    numerarSom -= 1;
+    btnAmbiente.textContent = "Ativar mudo"
+  } 
 })

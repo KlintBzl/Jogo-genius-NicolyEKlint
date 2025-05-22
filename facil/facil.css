@@ -11,6 +11,17 @@ body {
     gap: 10px; 
     margin-left: 39%;
 }
+
+#mudo{
+    border: none;
+    margin: 1% 2%;
+    padding: 1%;
+    border-radius: 8px;
+    background-color: rgb(122, 122, 122);
+    cursor: pointer;
+    color: white;
+
+}
     
 a button{
     font-size: 16px; 
