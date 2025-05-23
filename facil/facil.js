@@ -135,6 +135,7 @@ btnAlternarE.addEventListener("click", (e) => {
 
 const jogar = new Audio('/sons/gaming-music-8-bit-console-play-background-intro-theme-342069.mp3')
 jogar.loop = true;
+jogar.autoplay = true;
 let numerarSom = 0;
 
 const btnAmbiente = document.getElementById("Mudo");
