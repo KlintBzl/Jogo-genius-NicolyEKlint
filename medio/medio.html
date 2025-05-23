@@ -4,13 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="medio.css">
-    <script src="medio.js" defer ></script>
-    <title>Jogo</title>
+    <link rel="stylesheet" href="facil.css">
+    <script src="facil.js" defer ></script>
+    <title>Dificuldade fácil</title>
 </head>
 <body>
+  <audio autoplay loop muted id="ambiente">
+      <source src="./fundo.mp3" type="audio/mp3">
+      socorro
+    </audio>
+
   <button id="alternarE">Modo escuro</button>
   <button id="alternarC">Modo claro</button>
+
+  <button id="mudo">Ativar som</button>
     <div id="corpo">
     <div class="cor verde" id="verde"></div>
     <div class="cor vermelho" id="vermelho"></div>
@@ -27,5 +34,6 @@
 
   <ul id="lista-records"></ul>
     </div>
+
 </body>
 </html>
