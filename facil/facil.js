@@ -7,6 +7,11 @@ let acceptingInput = false;
 const ganhou = new Audio('/sons/goodresult-82807.mp3');
 const perdeu = new Audio('/sons/failure-1-89170.mp3');
 
+const Verde = new Audio('/sons/green.mp3');
+const Azul = new Audio('/sons/blue.mp3');
+const Vermelho = new Audio('/sons/red.mp3');
+const Amarelo = new Audio('/sons/yellow.mp3');
+
 const startBtn = document.getElementById('start-btn');
 const statusText = document.getElementById('status');
 const lista = document.getElementById('lista-records');
@@ -72,13 +77,13 @@ function flashCor(cor) {
   el.classList.add('active');
   setTimeout(() => el.classList.remove('active'), 400);
   if(cor == "verde"){
-    alert("verde")
+    Verde.play();
   }else if(cor == "vermelho"){
-    alert("vermelho")
+    Vermelho.play();
   }else if(cor == "amarelo"){
-    alert("amarelo")
+    Amarelo.play();
   }else if(cor == "azul"){
-    alert("azul")
+    Azul.play();
   }
 }
 
