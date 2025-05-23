@@ -44,7 +44,8 @@ function playSequence() {
   if(level > 10){
     statusText.textContent = "Parabéns você ganhou!";
     ganhou.play();
-
+  }
+  if(level > 10){
     const yOuN = prompt("Você quer colocar seu record na lista?");
   if(yOuN === "sim"){
     const nome = prompt("Coloque seu nome:");
@@ -138,3 +139,13 @@ btnAlternarE.addEventListener("click", (e) => {
       startBtn.classList.remove("escurecerStart");
       statusText.classList.remove("escurecerText");
 })
+
+document.addEventListener("DOMContentLoaded", function () {
+  const botaoSom = document.getElementById("mudo");
+  const audio = document.getElementById("ambiente");
+
+  botaoSom.addEventListener("click", function () {
+    audio.muted = !audio.muted;
+    botaoSom.textContent = audio.muted ? "Ativar som" : "Mutar som";
+  });
+});

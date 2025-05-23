@@ -10,17 +10,14 @@
 </head>
 <body>
   <audio autoplay loop muted id="ambiente">
-      <source src="/sons/fundo.mp3" type="audio/mp3">
+      <source src="./fundo.mp3" type="audio/mp3">
+      socorro
     </audio>
 
   <button id="alternarE">Modo escuro</button>
   <button id="alternarC">Modo claro</button>
 
-  <button id="mudo" onclick="
-  const audio = document.getElementById('ambiente');
-  audio.muted = !audio.muted;
-  this.textContent = audio.muted ? 'Ativar som' : 'Mutar som';
-">Ativar som</button>
+  <button id="mudo">Ativar som</button>
     <div id="corpo">
     <div class="cor verde" id="verde"></div>
     <div class="cor vermelho" id="vermelho"></div>
