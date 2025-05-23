@@ -141,11 +141,18 @@ btnAlternarE.addEventListener("click", (e) => {
 })
 
 document.addEventListener("DOMContentLoaded", function () {
-  const botaoSom = document.getElementById("mudo");
+  const botao = document.getElementById("mudo");
   const audio = document.getElementById("ambiente");
 
-  botaoSom.addEventListener("click", function () {
-    audio.muted = !audio.muted;
-    botaoSom.textContent = audio.muted ? "Ativar som" : "Mutar som";
-  });
+  botao.addEventListener("click", function () {
+    audio.muted = false;
+    audio.play();
+    botao.textContent = "Mutar Som";
+
+
+    botao.addEventListener("click", function () {
+      audio.muted = !audio.muted;
+      botao.textContent = audio.muted ? "Ativar Som" : "Mutar Som";
+    });
+  }, { once: true }); 
 });
