@@ -44,7 +44,7 @@ function playSequence() {
   if(level > 10){
     statusText.textContent = "Parabéns você ganhou!";
     ganhou.play();
-    
+
     const yOuN = prompt("Você quer colocar seu record na lista?");
   if(yOuN === "sim"){
     const nome = prompt("Coloque seu nome:");
@@ -137,20 +137,4 @@ btnAlternarE.addEventListener("click", (e) => {
       troca.classList.remove("escurecerB");
       startBtn.classList.remove("escurecerStart");
       statusText.classList.remove("escurecerText");
-})
-
-let numerarSom = 0;
-
-const btnAmbiente = document.getElementById("Mudo");
-
-btnAmbiente.addEventListener("click", (e) => {
-  if(numerarSom === 0){
-    jogar.pause();
-    numerarSom += 1;
-    btnAmbiente.textContent = "Desativar mudo"
-  }else if(numerarSom === 1){
-    jogar.play();
-    numerarSom -= 1;
-    btnAmbiente.textContent = "Ativar mudo"
-  } 
 })
