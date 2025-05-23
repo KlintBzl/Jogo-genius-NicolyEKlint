@@ -133,7 +133,6 @@ btnAlternarE.addEventListener("click", (e) => {
       statusText.classList.remove("escurecerText");
 })
 
-const jogar = document.getElementById("jogue");
 let numerarSom = 0;
 
 const btnAmbiente = document.getElementById("Mudo");
