@@ -44,6 +44,7 @@ function playSequence() {
   if(level > 10){
     statusText.textContent = "Parabéns você ganhou!";
     ganhou.play();
+    
     const yOuN = prompt("Você quer colocar seu record na lista?");
   if(yOuN === "sim"){
     const nome = prompt("Coloque seu nome:");

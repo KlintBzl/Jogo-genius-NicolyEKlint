@@ -13,12 +13,15 @@
       <source src="sons/gaming-music-8-bit-console-play-background-intro-theme-342069.mp3"
        type="audio/mp3">
     </audio>
-    
+
   <button id="alternarE">Modo escuro</button>
   <button id="alternarC">Modo claro</button>
 
   <button id="mudo" onclick="
-   document.getElementById('ambiente').muted = false;">Ativar mudo</button>
+  const audio = document.getElementById('ambiente');
+  audio.muted = !audio.muted;
+  this.textContent = audio.muted ? 'Ativar som' : 'Mutar som';
+">Ativar som</button>
     <div id="corpo">
     <div class="cor verde" id="verde"></div>
     <div class="cor vermelho" id="vermelho"></div>
@@ -35,11 +38,6 @@
 
   <ul id="lista-records"></ul>
     </div>
-
-    <audio autoplay loop muted id="ambiente">
-      <source src="sons/gaming-music-8-bit-console-play-background-intro-theme-342069.mp3"
-       type="audio/mp3">
-    </audio>
 
 </body>
 </html>
