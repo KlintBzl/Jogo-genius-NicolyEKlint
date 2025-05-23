@@ -4,8 +4,8 @@ let playerSequence = [];
 let level = 0;
 let acceptingInput = false;
 
-const ganhou = new Audio('/sons/goodresult-82807.mp3');
-const perdeu = new Audio('/sons/failure-1-89170.mp3');
+const ganhou = new Audio('/sons/ganhar.mp3');
+const perdeu = new Audio('/sons/falha.mp3');
 
 const Verde = new Audio('/sons/green.mp3');
 const Azul = new Audio('/sons/blue.mp3');
@@ -41,7 +41,7 @@ function proxLevel() {
 function playSequence() {
   acceptingInput = false;
   let i = 0;
-  if(level > 5){
+  if(level > 10){
     statusText.textContent = "Parabéns você ganhou!";
     ganhou.play();
     const yOuN = prompt("Você quer colocar seu record na lista?");
