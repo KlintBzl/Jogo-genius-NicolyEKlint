@@ -1,6 +1,6 @@
 const cores = ['verde', 'vermelho', 'amarelo', 'azul'];
-let sequence = [];
-let playerSequence = [];
+let sequencia = [];
+let sequenciaPlayer = [];
 let level = 0;
 let acceptingInput = false;
 
@@ -15,11 +15,11 @@ const lista = document.getElementById('lista-records');
 startBtn.addEventListener('click', startGame);
 
 cores.forEach(cor => {
-  document.getElementById(cor).addEventListener('click', () => handleClick(cor));
+  document.getElementById(cor).addEventListener('click', () => clickManual(cor));
 });
 
 function startGame() {
-  sequence = [];
+  sequencia = [];
   level = 0;
   statusText.textContent = "Boa sorte!";
   proxLevel();
@@ -27,23 +27,23 @@ function startGame() {
 }
 
 function proxLevel() {
-  playerSequence = [];
+  sequenciaPlayer = [];
   level++;
   statusText.textContent = `Nível ${level}`;
   const nextCor = cores[Math.floor(Math.random() * cores.length)];
-  sequence.push(nextCor);
-  playSequence();
+  sequencia.push(nextCor);
+  playSequencia();
 }
 
-function playSequence() {
+function playSequencia() {
   acceptingInput = false;
   let i = 0;
   
     const interval = setInterval(() => {
-    const cor = sequence[i];
+    const cor = sequencia[i];
     flashCor(cor);
     i++;
-    if (i >= sequence.length) {
+    if (i >= sequencia.length) {
       clearInterval(interval);
       acceptingInput = true;
     }
@@ -55,24 +55,24 @@ function flashCor(cor) {
   el.classList.add('active');
   setTimeout(() => el.classList.remove('active'), 400);
   if(cor == "verde"){
-    alert("verde")
+    Verde.play();
   }else if(cor == "vermelho"){
-    alert("vermelho")
+    Vermelho.play();
   }else if(cor == "amarelo"){
-    alert("amarelo")
+    Amarelo.play();
   }else if(cor == "azul"){
-    alert("azul")
+    Azul.play();
   }
 }
 
-function handleClick(cor) {
+function clickManual(cor) {
   if (!acceptingInput) return;
   flashCor(cor);
-  playerSequence.push(cor);
-  const index = playerSequence.length - 1;
+  sequenciaPlayer.push(cor);
+  const index = sequenciaPlayer.length - 1;
 
 
-  if (playerSequence[index] !== sequence[index]) {
+  if (sequenciaPlayer[index] !== sequencia[index]) {
     statusText.textContent = `Game over! Você perdeu no nível ${level}.`;
     acceptingInput = false;
     jogar.pause();
@@ -94,7 +94,7 @@ function handleClick(cor) {
   return;
   }
 
-  if (playerSequence.length === sequence.length) {
+  if (sequenciaPlayer.length === sequencia.length) {
   acceptingInput = false;
   setTimeout(proxLevel, 10);
   }
