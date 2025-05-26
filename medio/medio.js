@@ -4,19 +4,22 @@ let playerSequence = [];
 let level = 0;
 let acceptingInput = false;
 
-const ganhou = new Audio('/sons/goodresult-82807.mp3')
-const perdeu = new Audio('/sons/failure-1-89170.mp3')
-const jogar = new Audio('/sons/gaming-music-8-bit-console-play-background-intro-theme-342069.mp3')
-jogar.loop = true;
-jogar.volume = 0.5;
-const btnStart = document.getElementById('start-btn');
+const ganhou = new Audio('/sons/ganhar.mp3');
+const perdeu = new Audio('/sons/falha.mp3');
+
+const Verde = new Audio('/sons/green.mp3');
+const Azul = new Audio('/sons/blue.mp3');
+const Vermelho = new Audio('/sons/red.mp3');
+const Amarelo = new Audio('/sons/yellow.mp3');
+
+const startBtn = document.getElementById('start-btn');
 const statusText = document.getElementById('status');
 const lista = document.getElementById('lista-records');
 
-btnStart.addEventListener('click', startGame);
+startBtn.addEventListener('click', startGame);
 
 cores.forEach(cor => {
-  document.getElementById(cor).addEventListener('click', () => clickManual(cor));
+  document.getElementById(cor).addEventListener('click', () => handleClick(cor));
 });
 
 function startGame() {
@@ -24,7 +27,6 @@ function startGame() {
   level = 0;
   statusText.textContent = "Boa sorte!";
   proxLevel();
-  jogar.play();
 }
 
 function proxLevel() {
@@ -41,8 +43,9 @@ function playSequence() {
   let i = 0;
   if(level > 20){
     statusText.textContent = "Parabéns você ganhou!";
-    jogar.pause();
     ganhou.play();
+  }
+  if(level > 10){
     const yOuN = prompt("Você quer colocar seu record na lista?");
   if(yOuN === "sim"){
     const nome = prompt("Coloque seu nome:");
@@ -86,7 +89,7 @@ function flashCor(cor) {
   }
 }
 
-function clickManual(cor) {
+function handleClick(cor) {
   if (!acceptingInput) return;
   flashCor(cor);
   playerSequence.push(cor);
@@ -96,7 +99,6 @@ function clickManual(cor) {
   if (playerSequence[index] !== sequence[index]) {
     statusText.textContent = `Game over! Você perdeu no nível ${level}.`;
     acceptingInput = false;
-    jogar.pause();
     perdeu.play();
     
     const yOuN = prompt("Você quer colocar seu record na lista?");
@@ -127,13 +129,30 @@ const troca = document.querySelector("body");
 
 btnAlternarC.addEventListener("click", (e) => {
       troca.classList.add("escurecerB");
-      btnStart.classList.add("escurecerStart");
+      startBtn.classList.add("escurecerStart");
       statusText.classList.add("escurecerText");
 
 });
 
 btnAlternarE.addEventListener("click", (e) => {
       troca.classList.remove("escurecerB");
-      btnStart.classList.remove("escurecerStart");
+      startBtn.classList.remove("escurecerStart");
       statusText.classList.remove("escurecerText");
 })
+
+document.addEventListener("DOMContentLoaded", function () {
+  const botao = document.getElementById("mudo");
+  const audio = document.getElementById("ambiente");
+
+  botao.addEventListener("click", function () {
+    audio.muted = false;
+    audio.play();
+    botao.textContent = "Mutar Som";
+
+
+    botao.addEventListener("click", function () {
+      audio.muted = !audio.muted;
+      botao.textContent = audio.muted ? "Ativar Som" : "Mutar Som";
+    });
+  }, { once: true }); 
+});

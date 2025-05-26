@@ -4,10 +4,14 @@ let playerSequence = [];
 let level = 0;
 let acceptingInput = false;
 
-const ganhou = new Audio('/sons/goodresult-82807.mp3')
-const perdeu = new Audio('/sons/failure-1-89170.mp3')
-const jogar = new Audio('/sons/gaming-music-8-bit-console-play-background-intro-theme-342069.mp3')
-jogar.loop = true;
+const ganhou = new Audio('/sons/ganhar.mp3');
+const perdeu = new Audio('/sons/falha.mp3');
+
+const Verde = new Audio('/sons/green.mp3');
+const Azul = new Audio('/sons/blue.mp3');
+const Vermelho = new Audio('/sons/red.mp3');
+const Amarelo = new Audio('/sons/yellow.mp3');
+
 const startBtn = document.getElementById('start-btn');
 const statusText = document.getElementById('status');
 const lista = document.getElementById('lista-records');
@@ -23,7 +27,6 @@ function startGame() {
   level = 0;
   statusText.textContent = "Boa sorte!";
   proxLevel();
-  jogar.play();
 }
 
 function proxLevel() {
@@ -40,8 +43,9 @@ function playSequence() {
   let i = 0;
   if(level > 25){
     statusText.textContent = "Parabéns você ganhou!";
-    jogar.pause();
     ganhou.play();
+  }
+  if(level > 10){
     const yOuN = prompt("Você quer colocar seu record na lista?");
   if(yOuN === "sim"){
     const nome = prompt("Coloque seu nome:");
@@ -70,7 +74,6 @@ function playSequence() {
 
 }
 
-
 function flashCor(cor) {
   const el = document.getElementById(cor);
   el.classList.add('active');
@@ -96,7 +99,6 @@ function handleClick(cor) {
   if (playerSequence[index] !== sequence[index]) {
     statusText.textContent = `Game over! Você perdeu no nível ${level}.`;
     acceptingInput = false;
-    jogar.pause();
     perdeu.play();
     
     const yOuN = prompt("Você quer colocar seu record na lista?");
@@ -137,3 +139,20 @@ btnAlternarE.addEventListener("click", (e) => {
       startBtn.classList.remove("escurecerStart");
       statusText.classList.remove("escurecerText");
 })
+
+document.addEventListener("DOMContentLoaded", function () {
+  const botao = document.getElementById("mudo");
+  const audio = document.getElementById("ambiente");
+
+  botao.addEventListener("click", function () {
+    audio.muted = false;
+    audio.play();
+    botao.textContent = "Mutar Som";
+
+
+    botao.addEventListener("click", function () {
+      audio.muted = !audio.muted;
+      botao.textContent = audio.muted ? "Ativar Som" : "Mutar Som";
+    });
+  }, { once: true }); 
+});

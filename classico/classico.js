@@ -1,13 +1,17 @@
 const cores = ['verde', 'vermelho', 'amarelo', 'azul'];
-let sequencia = [];
-let sequenciaPlayer = [];
+let sequence = [];
+let playerSequence = [];
 let level = 0;
 let acceptingInput = false;
 
-const ganhou = new Audio('/sons/goodresult-82807.mp3')
-const perdeu = new Audio('/sons/failure-1-89170.mp3')
-const jogar = new Audio('/sons/gaming-music-8-bit-console-play-background-intro-theme-342069.mp3')
-jogar.loop = true;
+const ganhou = new Audio('/sons/ganhar.mp3');
+const perdeu = new Audio('/sons/falha.mp3');
+
+const Verde = new Audio('/sons/green.mp3');
+const Azul = new Audio('/sons/blue.mp3');
+const Vermelho = new Audio('/sons/red.mp3');
+const Amarelo = new Audio('/sons/yellow.mp3');
+
 const startBtn = document.getElementById('start-btn');
 const statusText = document.getElementById('status');
 const lista = document.getElementById('lista-records');
@@ -15,40 +19,40 @@ const lista = document.getElementById('lista-records');
 startBtn.addEventListener('click', startGame);
 
 cores.forEach(cor => {
-  document.getElementById(cor).addEventListener('click', () => clickManual(cor));
+  document.getElementById(cor).addEventListener('click', () => handleClick(cor));
 });
 
 function startGame() {
-  sequencia = [];
+  sequence = [];
   level = 0;
   statusText.textContent = "Boa sorte!";
   proxLevel();
-  jogar.play();
 }
 
 function proxLevel() {
-  sequenciaPlayer = [];
+  playerSequence = [];
   level++;
   statusText.textContent = `Nível ${level}`;
   const nextCor = cores[Math.floor(Math.random() * cores.length)];
-  sequencia.push(nextCor);
-  playSequencia();
+  sequence.push(nextCor);
+  playSequence();
 }
 
-function playSequencia() {
+function playSequence() {
   acceptingInput = false;
   let i = 0;
   
     const interval = setInterval(() => {
-    const cor = sequencia[i];
+    const cor = sequence[i];
     flashCor(cor);
     i++;
-    if (i >= sequencia.length) {
+    if (i >= sequence.length) {
       clearInterval(interval);
       acceptingInput = true;
     }
   }, 700);
     }
+  
 
 function flashCor(cor) {
   const el = document.getElementById(cor);
@@ -65,17 +69,16 @@ function flashCor(cor) {
   }
 }
 
-function clickManual(cor) {
+function handleClick(cor) {
   if (!acceptingInput) return;
   flashCor(cor);
-  sequenciaPlayer.push(cor);
-  const index = sequenciaPlayer.length - 1;
+  playerSequence.push(cor);
+  const index = playerSequence.length - 1;
 
 
-  if (sequenciaPlayer[index] !== sequencia[index]) {
+  if (playerSequence[index] !== sequence[index]) {
     statusText.textContent = `Game over! Você perdeu no nível ${level}.`;
     acceptingInput = false;
-    jogar.pause();
     perdeu.play();
     
     const yOuN = prompt("Você quer colocar seu record na lista?");
@@ -85,7 +88,7 @@ function clickManual(cor) {
       if (nome !== '') {
         alert("Obrigado! Que tal tentar novamente?");
         const novoItem = document.createElement('li');
-        novoItem.textContent = `${nome} | Nível em que perdeu: ${level}`;
+        novoItem.textContent = `${nome} | Nível alcançado: ${level}`;
         lista.appendChild(novoItem);
         inputItem.value = '';
         inputItem.focus();
@@ -94,7 +97,7 @@ function clickManual(cor) {
   return;
   }
 
-  if (sequenciaPlayer.length === sequencia.length) {
+  if (playerSequence.length === sequence.length) {
   acceptingInput = false;
   setTimeout(proxLevel, 10);
   }
@@ -116,3 +119,20 @@ btnAlternarE.addEventListener("click", (e) => {
       startBtn.classList.remove("escurecerStart");
       statusText.classList.remove("escurecerText");
 })
+
+document.addEventListener("DOMContentLoaded", function () {
+  const botao = document.getElementById("mudo");
+  const audio = document.getElementById("ambiente");
+
+  botao.addEventListener("click", function () {
+    audio.muted = false;
+    audio.play();
+    botao.textContent = "Mutar Som";
+
+
+    botao.addEventListener("click", function () {
+      audio.muted = !audio.muted;
+      botao.textContent = audio.muted ? "Ativar Som" : "Mutar Som";
+    });
+  }, { once: true }); 
+});
